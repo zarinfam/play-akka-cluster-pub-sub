@@ -2,3 +2,7 @@ This is your new Play application
 =================================
 
 This file will be packaged with your application, when using `activator dist`.
+
+activator -Dnode.id=1  run
+
+activator -Dnode.id=2 -Dhttp.port=9001 -Dakka.remote.netty.tcp.port=2552 run
