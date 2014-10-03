@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Greeter extends UntypedActor {
 
-    public static ActorRef actorRef = Akka.system().actorOf(Props.create(Greeter.class),"Greeter");
+    public static ActorRef actorRef ;
 
     Cluster cluster = Cluster.get(getContext().system());
     List<Member> clusterMemberList = new ArrayList<Member>();
