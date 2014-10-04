@@ -15,7 +15,6 @@ libraryDependencies ++= Seq(
   javaWs,
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" % "akka-remote_2.11" % akkaVersion,
-  "com.typesafe.akka" %% "akka-contrib" % akkaVersion,
   "com.typesafe.akka" %% "akka-cluster" % akkaVersion
 )
 
