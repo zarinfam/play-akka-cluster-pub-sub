@@ -52,13 +52,17 @@ public class Greeter extends UntypedActor {
 //      getSender().tell(Msg.DONE, getSelf());
         }else if (message == Msg.NOTIFY_ALL){
             PlayInternal.logger().info("---------------> start notify");
-            for(Member member: clusterMemberList){
-                PlayInternal.logger().info("---------------> notify = "+member.address());
-                getContext().actorSelection(member.address()+"/user/Greeter").tell(
-                        Greeter.Msg.GREET, getSelf());
+            if (clusterMemberList.size() != 0) {
+                for (Member member : clusterMemberList) {
+                    PlayInternal.logger().info("---------------> notify = " + member.address());
+                    getContext().actorSelection(member.address() + "/user/Greeter").tell(
+                            Greeter.Msg.GREET, getSelf());
 
 //                member.tell(Greeter.Msg.GREET, null);
 
+                }
+            }else{
+                actorRef.tell(Msg.GREET, getSelf());
             }
         }
         else if (message instanceof ClusterEvent.MemberUp) {
